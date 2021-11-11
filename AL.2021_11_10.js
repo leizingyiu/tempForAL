@@ -54,7 +54,7 @@ var fontObj = {};
 let play = true;
 let mouseIn = true;
 function preload() {
-    let prePath = '../font/Source-Code-Pro/';
+    let prePath = './font/Source-Code-Pro/';
     Object.keys(fontNamesObj).map((key, idx, arr) => {
         console.log(fontNamesObj[key]);
         fontObj[key] = '';
