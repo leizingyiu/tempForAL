@@ -266,11 +266,11 @@ function Block(row, column, width, height, idx) {
     };
 
     that.refleshFontFill = function () {
-        let k = Math.abs((1 - that.mouseK) + (0 - that.process));
+        let k = Math.abs((1 - that.mouseK) + (that.process));
 
         // idx == 0 && console.log(`k:${k}`);
 
-        that.textFill = map(k, 1, 0, that.rectSourceFill, that.textSourceFill);
+        that.textFill = map(k, 0, 1, that.rectSourceFill, that.textSourceFill);
     }
 
     let weightList = [...Object.keys(fontObj).map(k => Number(k))];
@@ -280,8 +280,8 @@ function Block(row, column, width, height, idx) {
     that.refleshFontWeight = function () {
 
         // idx == 0 && console.log(that.mouseK, that.process, mouseIn);
-        let k = (1 - that.mouseK) + (1 - that.process);
-        let weight = map(k, 0, 1, minWeight, maxWeight);
+        let k = Math.abs((1 - that.mouseK) + (that.process));
+        let weight = map(k, 1, 0, minWeight, maxWeight);
 
         weight = Math.floor(weight / 100) * 100;
         weight = Math.max(Math.min(weight, maxWeight), minWeight);
