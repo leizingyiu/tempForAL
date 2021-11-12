@@ -268,7 +268,7 @@ function Block(row, column, width, height, idx) {
     that.refleshFontFill = function () {
         let k = Math.abs((1 - that.mouseK) + (0 - that.process));
 
-        idx == 0 && console.log(`k:${k}`);
+        // idx == 0 && console.log(`k:${k}`);
 
         that.textFill = map(k, 1, 0, that.rectSourceFill, that.textSourceFill);
     }
