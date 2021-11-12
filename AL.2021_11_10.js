@@ -2,20 +2,20 @@ w = 900;
 h = 800;
 
 let fontFilesName = `
-2017/04/23  16:29           213,512 1-SourceCodePro-ExtraLight-5.ttf
-2017/04/23  16:30           174,764 10-SourceCodePro-SemiboldIt-14.ttf
-2017/04/23  16:29           211,716 11-SourceCodePro-Bold-3.ttf
-2017/04/23  16:29           174,372 12-SourceCodePro-BoldIt-4.ttf
-2017/04/23  16:29           211,460 13-SourceCodePro-Black-1.ttf
-2017/04/23  16:29           174,208 14-SourceCodePro-BlackIt-2.ttf
-2017/04/23  16:29           176,076 2-SourceCodePro-ExtraLightIt-6.ttf
-2017/04/23  16:30           213,252 3-SourceCodePro-Light-8.ttf
-2017/04/23  16:30           176,124 4-SourceCodePro-LightIt-9.ttf
-2017/04/23  16:30           212,880 5-SourceCodePro-Regular-12.ttf
-2017/04/23  16:29           180,472 6-SourceCodePro-It-7.ttf
-2017/04/23  16:30           212,160 7-SourceCodePro-Medium-10.ttf
-2017/04/23  16:30           175,308 8-SourceCodePro-MediumIt-11.ttf
-2017/04/23  16:30           212,048 9-SourceCodePro-Semibold-13.ttf
+2017/04/23  16:29           213,512 1-SourceCodePro-ExtraLight-5.otf
+2017/04/23  16:30           174,764 10-SourceCodePro-SemiboldIt-14.otf
+2017/04/23  16:29           211,716 11-SourceCodePro-Bold-3.otf
+2017/04/23  16:29           174,372 12-SourceCodePro-BoldIt-4.otf
+2017/04/23  16:29           211,460 13-SourceCodePro-Black-1.otf
+2017/04/23  16:29           174,208 14-SourceCodePro-BlackIt-2.otf
+2017/04/23  16:29           176,076 2-SourceCodePro-ExtraLightIt-6.otf
+2017/04/23  16:30           213,252 3-SourceCodePro-Light-8.otf
+2017/04/23  16:30           176,124 4-SourceCodePro-LightIt-9.otf
+2017/04/23  16:30           212,880 5-SourceCodePro-Regular-12.otf
+2017/04/23  16:29           180,472 6-SourceCodePro-It-7.otf
+2017/04/23  16:30           212,160 7-SourceCodePro-Medium-10.otf
+2017/04/23  16:30           175,308 8-SourceCodePro-MediumIt-11.otf
+2017/04/23  16:30           212,048 9-SourceCodePro-Semibold-13.otf
 `;
 
 
@@ -57,7 +57,7 @@ let play = true;
 let mouseIn = true;
 
 function preload() {
-    let prePath = './font/Source-Code-Pro/';
+    let prePath = './font/Source-Code-Pro-AL/';
     Object.keys(fontNamesObj).map((key, idx, arr) => {
         console.log(fontNamesObj[key]);
         fontObj[key] = loadFont(prePath + fontNamesObj[key]);
