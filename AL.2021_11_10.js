@@ -17,6 +17,8 @@ let fontFilesName = `
 2017/04/23  16:30           175,308 8-SourceCodePro-MediumIt-11.ttf
 2017/04/23  16:30           212,048 9-SourceCodePro-Semibold-13.ttf
 `;
+
+
 let fileNames = {};
 f = fontFilesName.split('\n').filter(t => t.length > 0).map(t => {
     t = t.match(/\S+$/);
@@ -53,6 +55,7 @@ Object.keys(fileNames).map((i, idx, arr) => {
 var fontObj = {};
 let play = true;
 let mouseIn = true;
+
 function preload() {
     let prePath = './font/Source-Code-Pro/';
     Object.keys(fontNamesObj).map((key, idx, arr) => {
@@ -74,6 +77,8 @@ function setup() {
     }
 }
 
+
+
 function draw() {
     if (mouseX < w && mouseY < h) {
         mouseIn = true;
@@ -88,22 +93,19 @@ function draw() {
             b[i].main();
         }
 
-        // stroke(255);//TODO
+        // stroke(255); //TODO
         // strokeWeight(2);
         // fill(0);
         // text(frameCount, 20, 20);
     }
-
-
 }
 
 function keyPressed() {
     if (keyCode === 32) {
         play = !play;
     }
-    return false; // prevent any default behavior
+    // return false; // prevent any default behavior
 }
-
 
 function Block(row, column, width, height, idx) {
 
@@ -137,8 +139,14 @@ function Block(row, column, width, height, idx) {
         that.placeDirection = 'row';
         that.playDirection = 'column';
         that.direction = {
-            'row': { 'num': row, 'width': row * width },
-            'column': { 'num': column, 'width': column * height }
+            'row': {
+                'num': row,
+                'width': row * width
+            },
+            'column': {
+                'num': column,
+                'width': column * height
+            }
         };
 
         // that.idxX = (idx % that.direction[that.playDirection].num);
@@ -159,25 +167,19 @@ function Block(row, column, width, height, idx) {
         that.mouseK = 1;
         that.mouseDefaultK = 1;
 
-
         //text 
-        that.text = that.idxX % 2 == 1 ? 'L' : 'A';
-        that.text = idx == 0 ? 'A' : that.text;
+        that.text = that.idxX % 2 == 1 ? 'A' : 'L';
         that.rotateK = [0, 1][0];
 
-
-
         //frame
-
-
-        that.frameInterval = 10; //setting
+        that.frameInterval = 3; //setting
         that.maxDuraFrame = 90; //setting
-
+        that.minDuraFrame = 30;
         that.startFrame = 0; //init
         that.endFrame = 0; //init
-        that.frameRand = 0.5;//init
-        that.processStartFrame = that.startFrame;//init
-        that.processEndFrame = that.processStartFrame;//init
+        that.frameRand = 0.5; //init
+        that.processStartFrame = that.startFrame; //init
+        that.processEndFrame = that.processStartFrame; //init
         that.processBoo = true; //init
         that.process = 0;
         //font
@@ -196,7 +198,6 @@ function Block(row, column, width, height, idx) {
         //weight
         that.fontWeight = 500;
 
-
         that.init = () => { };
     };
 
@@ -207,8 +208,10 @@ function Block(row, column, width, height, idx) {
 
         if (frameCount >= that.processEndFrame) {
             that.frameRand = noise((that.idxX + 1) * frameCount);
+            let nextDuraFrames = Math.floor(that.frameRand * that.maxDuraFrame);
             that.processStartFrame = frameCount;
-            that.processEndFrame = that.processStartFrame + Math.floor(that.frameRand * that.maxDuraFrame);
+            that.processEndFrame = that.processStartFrame + nextDuraFrames + that.minDuraFrame;
+
         }
 
         if (frameCount >= that.endFrame) {
@@ -229,7 +232,8 @@ function Block(row, column, width, height, idx) {
             that.process.toFixed(5), that.frameRand.toFixed(4),
             that.processStartFrame, that.processEndFrame,
             that.startFrame, frameCount, that.endFrame,
-            that.endFrame - that.startFrame];
+            that.endFrame - that.startFrame
+        ];
 
         // consoleIdx.indexOf(idx) != -1 && console.log(consoleArr.join(' | '));
 
@@ -266,7 +270,7 @@ function Block(row, column, width, height, idx) {
 
         idx == 0 && console.log(`k:${k}`);
 
-        that.textFill = map(k, 0, 1, that.rectSourceFill, that.textSourceFill);
+        that.textFill = map(k, 1, 0, that.rectSourceFill, that.textSourceFill);
     }
 
     let weightList = [...Object.keys(fontObj).map(k => Number(k))];
@@ -323,7 +327,7 @@ function Block(row, column, width, height, idx) {
             return void 0;
         }
         textSize(12);
-        stroke(0);//TODO
+        stroke(0); //TODO
         strokeWeight(2);
         fill(255);
         text(`${that.startFrame} | ${that.endFrame}`, 0, height / 2 - 20);
@@ -341,7 +345,7 @@ function Block(row, column, width, height, idx) {
         that.rotateText();
         that.drawText();
 
-        // that.showInfo();
+        //that.showInfo();
 
         that.premove();
     };
