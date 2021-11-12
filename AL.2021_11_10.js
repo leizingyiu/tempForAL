@@ -57,7 +57,6 @@ function preload() {
     let prePath = './font/Source-Code-Pro/';
     Object.keys(fontNamesObj).map((key, idx, arr) => {
         console.log(fontNamesObj[key]);
-        fontObj[key] = '';
         fontObj[key] = loadFont(prePath + fontNamesObj[key]);
     })
 }
