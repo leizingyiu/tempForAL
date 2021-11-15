@@ -40,9 +40,6 @@ console.log(fileNames);
 let fontNamesObj = {};
 Object.keys(fileNames).map((i, idx, arr) => {
     let avg = eval(arr.join("+")) / arr.length;
-    //let closest = arr.filter(ele => { return ele - Math.min(...arr.map(a => Math.abs(a - avg))) == avg });
-    //let closestIdx = arr.indexOf(closest.toString());
-
     let temp, closestIdx;
     arr.map((a, index) => {
         closestIdx = typeof temp != 'undefined' && typeof closestIdx != 'undefined' ? (((a - avg) < temp) ? index : closestIdx) : index;
