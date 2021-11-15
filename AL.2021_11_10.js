@@ -182,6 +182,10 @@ function Block(row, column, width, height, idx) {
         that.processEndFrame = that.processStartFrame; //init
         that.processBoo = true; //init
         that.process = 0;
+
+        that.processIdx = column - this.idxY;
+
+
         //font
         that.font = fontObj['500'];
 
@@ -216,8 +220,8 @@ function Block(row, column, width, height, idx) {
 
         if (frameCount >= that.endFrame) {
 
-            that.startFrame = that.processStartFrame + that.idxY * that.frameInterval;
-            that.endFrame = that.processEndFrame + that.idxY * that.frameInterval;;
+            that.startFrame = that.processStartFrame + that.processIdx * that.frameInterval;
+            that.endFrame = that.processEndFrame + that.processIdx * that.frameInterval;;
 
             that.refleshBoo = true;
         }
